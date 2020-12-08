@@ -8,7 +8,11 @@ module.exports = {
         filename: 'index_bundle.js'
     },
     resolve: {
-        extensions: ['.js', '.json', '.scss', '.css']
+        extensions: ['.js', '.json', '.scss', '.css'],
+        alias: {
+            '@': path.resolve(__dirname, 'src'),
+            '@core': path.resolve(__dirname, 'src/core')
+        }
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
@@ -79,7 +83,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ['@babel/preset-env'],
+                        plugins: ['@babel/plugin-proposal-class-properties']
                     }
                 }
             }
